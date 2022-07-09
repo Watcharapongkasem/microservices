@@ -1,0 +1,94 @@
+version: '3.9'
+services:
+  my-running-app:
+    image: my-java
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+     - eurekanetwork
+  gateway-client:
+    container_name: gate-way
+    image: my-gate-way
+    ports:
+      - "8082:8082"
+    networks:
+     - eurekanetwork
+  auth-client:
+    container_name: auth
+    image: auth-service
+    ports:
+      - "6000:6000"
+    networks:
+     - eurekanetwork  
+  product-client:
+    container_name: product
+    image: product-service
+    ports:
+      - "7000:7000"
+    networks:
+     - eurekanetwork 
+  order-client:
+    container_name: order
+    image: order-service
+    ports:
+      - "7001:7001"
+    networks:
+     - eurekanetwork
+  checkout-client:
+    container_name: checkoutService
+    image: checkout-service
+    ports:
+      - "7002:7002"
+    networks:
+     - eurekanetwork 
+  db-auth:
+    image: mariadb:10.7
+    ports:
+      - 3500:3306
+    volumes:
+      - ./apps/mariadb-auth:/var/lib/mysql-auth
+    environment:
+      - MYSQL_ROOT_PASSWORD=852741
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=microservice
+    networks:
+     - eurekanetwork
+  db-product:
+    image: mariadb:10.7
+    ports:
+      - 3501:3306
+    volumes:
+      - ./apps/mariadb-product:/var/lib/mysql-product
+    environment:
+      - MYSQL_ROOT_PASSWORD=852741
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=product
+    networks:
+     - eurekanetwork
+  db-order:
+    image: mariadb:10.7
+    ports:
+      - 3502:3306
+    volumes:
+      - ./apps/mariadb-order:/var/lib/mysql-order
+    environment:
+      - MYSQL_ROOT_PASSWORD=852741
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=order
+    networks:
+     - eurekanetwork 
+  db-checkout:
+    image: mariadb:10.7
+    ports:
+      - 3503:3306
+    volumes:
+      - ./apps/mariadb-checkout:/var/lib/mysql-checkout
+    environment:
+      - MYSQL_ROOT_PASSWORD=852741
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=checkout
+    networks:
+     - eurekanetwork 
+networks:
+  eurekanetwork:
