@@ -26,9 +26,9 @@ export default function Order() {
           return (
             <div key={index}>
               <div>
-                <Image
+                <img
                   className="object-cover max-h-80 w-full"
-                  src="https://images.pexels.com/photos/1464625/pexels-photo-1464625.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  src="/pexels-photo-1464625.webp"
                   alt=""
                 />
               </div>
