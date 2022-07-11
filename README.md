@@ -2,7 +2,7 @@
 ![alt text](https://github.com/Watcharapongkasem/microservices/blob/main/doc/overview-microservice.png?raw=true)
 
  - Tech Stack 
-![alt text](https://github.com/Watcharapongkasem/microservices/blob/main/doc/infa.png?raw=true)
+![alt text](https://github.com/Watcharapongkasem/microservices/blob/main/doc/infa1.png?raw=true)
 # Front-end UI
  - Login Page
   
